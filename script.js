@@ -1,34 +1,20 @@
+// Hamburger Menu
 
-const menuToggle =
-document.querySelector(".menu-toggle");
-const menu =
-document.querySelector(".menu");
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
-menuToggle.addEventListener("click",(e) => {
-    e.stopPropagation();
+
+menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
 });
-menu.addEventListener("click", (e) => {
-    e.stopPropagation();
-});
-document.addEventListener("click", () =>{
-    menu.classList.remove("active");
-});
 
-const topBtn =
-document.getElementById("topBtn");
-window.addEventListener("scroll", () =>{
 
-    if(window.scrollY > 300){
-        topBtn.style.display ="block";
-    } else{
-        topBtn.style.display ="none";
-    }
-});
+// Close menu after clicking any link
 
-topBtn.addEventListener("click", () =>{
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
+const menuLinks = document.querySelectorAll(".menu li a");
+
+menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        menu.classList.remove("active");
     });
 });
