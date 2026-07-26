@@ -148,8 +148,8 @@ ul{
     linear-gradient(rgba(5,18,36,.72),
     rgba(5,18,36,.72)),
     url("images/hero.jpg") center/cover no-repeat;
-    background-size:105%;
-animation:zoomHero 10s ease-in-out infinite alternate;
+    background-size:cover;
+animation:zoomHero none;
 
     display:flex;
     justify-content:center;
@@ -987,14 +987,7 @@ font-size:28px;
         text-align:center;
     }
 }
-@keyframes zoomHero{
-    from{
-        background-size:105%;
-    }
-    to{
-        background-size:115%;
-    }
-}
+
 /* ==========================
    FLOATING WHATSAPP
 ========================== */
@@ -1136,4 +1129,83 @@ font-size:28px;
 }
 .modular-card{
     max-width: 100%;
+}
+/* ==========================================
+   STRICT MOBILE OVERFLOW FIX
+========================================== */
+
+/* 1. Global Box Sizing Fix */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+/* 2. Absolute Screen Lock */
+html {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+}
+
+/* 3. Fix Container Padding & Width */
+.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+/* 4. Mobile Overrides */
+@media (max-width: 768px) {
+    
+    /* Layout Fixes */
+    .about .container,
+    .contact-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .about-image, .about-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .stats .container, 
+    .counter .container {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    /* Disable Horizontal Shift from AOS Animations */
+    [data-aos="fade-left"],
+    [data-aos="fade-right"],
+    [data-aos="zoom-in"] {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    /* Floating Buttons Positioning */
+    .whatsapp-float {
+        right: 15px !important;
+        bottom: 20px !important;
+    }
+
+    .call-float {
+        right: 15px !important;
+        bottom: 85px !important;
+    }
+
+    #topBtn {
+        right: 15px !important;
+        bottom: 150px !important;
+    }
 }
